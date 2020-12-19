@@ -6,6 +6,11 @@ using UnityEngine.UI;
 public class ShopDlg : MonoBehaviour
 {
     public Button m_BtnShop;
+    public Button m_BtnBoss;
+    public Button m_BtnX;
+
+    public CanvasGroup m_BossPanel;
+    public CanvasGroup m_ShopPanel;
 
     public bool B_Check;
 
@@ -18,19 +23,66 @@ public class ShopDlg : MonoBehaviour
         m_ani.SetBool("bSelc", B_Check);
 
         m_BtnShop.onClick.AddListener(OnClickShop);
+        m_BtnBoss.onClick.AddListener(OnClickBoss);
+        m_BtnX.onClick.AddListener(OnClickX);
     }
 
     public void OnClickShop()
     {
-        if (B_Check)
+        if (!B_Check)
+        {
+            B_Check = true;
+            m_ani.SetBool("bSelc", B_Check);
+        }
+        StartCoroutine(ShopFadeIn());
+    }
+    public void OnClickBoss()
+    {
+        if (!B_Check)
+        {
+            B_Check = true;
+            m_ani.SetBool("bSelc", B_Check);
+        }
+        StartCoroutine(BossFadeIn());
+    }
+    public void OnClickX()
+    {
+        if(B_Check)
         {
             B_Check = false;
             m_ani.SetBool("bSelc", B_Check);
         }
-        else
+        m_BtnShop.interactable = true;
+    }
+
+    IEnumerator BossFadeIn()
+    {
+        m_BossPanel.gameObject.SetActive(true);
+        m_ShopPanel.gameObject.SetActive(false);
+        m_BtnBoss.interactable = false;
+        m_BtnShop.interactable = true;
+
+        m_BossPanel.alpha = 0;
+
+        while(m_BossPanel.alpha < 1)
         {
-            B_Check = true;
-            m_ani.SetBool("bSelc", B_Check);
+            yield return new WaitForSeconds(Time.deltaTime);
+            m_BossPanel.alpha += Time.deltaTime * 4 ;
+        }
+    }
+    IEnumerator ShopFadeIn()
+    {
+        m_BossPanel.gameObject.SetActive(false);
+        m_ShopPanel.gameObject.SetActive(true);
+        m_BtnShop.interactable = false;
+        m_BtnBoss.interactable = true;
+
+        m_ShopPanel.alpha = 0;
+
+        while (m_ShopPanel.alpha < 1)
+        {
+            yield return new WaitForSeconds(Time.deltaTime);
+            m_ShopPanel.alpha += Time.deltaTime * 4;
         }
     }
 }

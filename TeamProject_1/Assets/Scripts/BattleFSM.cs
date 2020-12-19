@@ -19,7 +19,7 @@ public class BattleFSM
         public virtual void OnExit() { }
     }
 
-    public class CReadyState : CState
+    public class CWaveState : CState
     {
         public override void OnEnter()
         {
@@ -29,7 +29,7 @@ public class BattleFSM
         public override void OnUpdate() { }
         public override void OnExit() { }
     }
-    public class CWaveState : CState
+    public class CGameState : CState
     {
         public override void OnEnter(){
             if (m_OnEnterFunc != null)
@@ -39,7 +39,7 @@ public class BattleFSM
         public override void OnExit()     {     }
 
     }
-    public class CGameState : CState
+    public class CBossState : CState
     {
         public override void OnEnter()
         {
@@ -57,13 +57,13 @@ public class BattleFSM
     private CState m_curState = null;
     private CState m_newState = null;
 
-    private CState m_kReady = new CReadyState();
+    private CState m_kBoss = new CBossState();
     private CState m_kWave = new CWaveState();
     private CState m_kGame = new CGameState();
 
-    public void Initialize( DelegateFunc kReady, DelegateFunc kWave, DelegateFunc kGame)
+    public void Initialize( DelegateFunc kBoss, DelegateFunc kWave, DelegateFunc kGame)
     {
-        m_kReady.Initialize(kReady);
+        m_kBoss.Initialize(kBoss);
         m_kWave.Initialize(kWave);
         m_kGame.Initialize(kGame);
     }
@@ -92,8 +92,8 @@ public class BattleFSM
     }
 
 
-    public void SetReadyState()    {
-        SetState(m_kReady);
+    public void SetBossState()    {
+        SetState(m_kBoss);
     }
     public void SetWaveState()    {
         SetState(m_kWave);

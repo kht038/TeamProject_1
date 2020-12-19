@@ -14,7 +14,6 @@ public class SettingDlg : MonoBehaviour
     [SerializeField] GameObject m_SettingPanel;
     [SerializeField] GameObject m_SoundPanel;
     [SerializeField] Image m_FadePanel;
-    [SerializeField] Image m_FadePanel2;
 
     void Start()
     {

@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\BattleFSM.cs" />
     <Compile Include="Assets\Scripts\GameMgr.cs" />
     <Compile Include="Assets\Scripts\GameScene.cs" />
+    <Compile Include="Assets\Scripts\GameScene\Game\BossDlg.cs" />
     <Compile Include="Assets\Scripts\GameScene\Game\GameDlg.cs" />
     <Compile Include="Assets\Scripts\GameScene\Game\SettingDlg.cs" />
     <Compile Include="Assets\Scripts\GameScene\Game\ShopDlg.cs" />
@@ -79,9 +80,11 @@
     <Compile Include="Assets\Scripts\StartScene\HudUI\HudUI.cs" />
     <Compile Include="Assets\Scripts\StartScene\HudUI\OptionTestDlg.cs" />
     <Compile Include="Assets\Scripts\StartScene\HudUI\StartMenuDlg.cs" />
-    <Compile Include="Assets\Scripts\StartScene\HudUI\States\GameState.cs" />
-    <Compile Include="Assets\Scripts\StartScene\HudUI\States\ReadyState.cs" />
     <Compile Include="Assets\Scripts\StartScene\TestMainDlg.cs" />
+    <Compile Include="Assets\Scripts\States\BossState.cs" />
+    <Compile Include="Assets\Scripts\States\GameState.cs" />
+    <Compile Include="Assets\Scripts\States\ReadyState.cs" />
+    <Compile Include="Assets\Scripts\States\WaveState.cs" />
     <None Include="Assets\Resources\Shader\Blur.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
